@@ -15,14 +15,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.topdownshooter.login.LoginView
 import com.example.topdownshooter.login.RegisterView
 import com.example.topdownshooter.ui.theme.TopDownShooterTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,14 +45,16 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                     composable (Screen.Register.route){
-                        RegisterView(navController = navController)
+                        RegisterView(navController = navController,onRegisterSuccess ={
+                            navController.navigate(Screen.Home.route)
+                        })
                     }
 
                     composable(Screen.Home.route) {
-                        Home(
+                        GameHomeView(
                             modifier = Modifier.fillMaxSize(),
                             onPlayClick = {
-                                navController.navigate(Screen.Game.route);
+                                navController.navigate(Screen.Home.route);
                             }
                         )
                     }

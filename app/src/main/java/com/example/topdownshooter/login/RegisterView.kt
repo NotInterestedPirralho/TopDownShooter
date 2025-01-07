@@ -21,7 +21,7 @@ import com.example.topdownshooter.Screen
 import com.example.topdownshooter.ui.theme.TopDownShooterTheme
 
 @Composable
-fun RegisterView(modifier: Modifier = Modifier, navController: NavController = rememberNavController()) {
+fun RegisterView(modifier: Modifier = Modifier, navController: NavController = rememberNavController(),onRegisterSuccess : ()->Unit = {}) {
 
     val viewModel: RegisterViewModel = viewModel()
     val state = viewModel.state.value
@@ -61,11 +61,9 @@ fun RegisterView(modifier: Modifier = Modifier, navController: NavController = r
             Button(
                 onClick = {
                     if (viewModel.CheckPasswords()) {
-                        viewModel.onRegisterClick()
+                        viewModel.onRegisterClick(onRegisterSuccess)
                     }
-                    if(state.error == null) {
-                        navController.navigate(Screen.Home.route)
-                    }
+
 
                 },
                 content = {
@@ -79,7 +77,7 @@ fun RegisterView(modifier: Modifier = Modifier, navController: NavController = r
 
             Spacer(modifier = Modifier.height(16.dp))
             if (state.error != null)
-                Text(state.error ?: "")
+                Text(state.error)
             if (state.isLoading)
                 CircularProgressIndicator()
 
