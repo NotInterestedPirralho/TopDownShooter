@@ -1,0 +1,3 @@
+o Jogo em si
+tela para o jogador criar o username depois de se registar
+highscore (guardar na firebase e mostrar depois de clicar no firebase)
