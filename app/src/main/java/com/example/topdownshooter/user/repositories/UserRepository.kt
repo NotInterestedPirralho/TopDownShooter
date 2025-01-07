@@ -74,4 +74,24 @@ object UserRepository {
                 user
             )
     }
+
+    fun updateUserName(newName: String, onResult: (Boolean) -> Unit) {
+        val currentUser = auth.currentUser
+        val userId = currentUser?.uid
+        if (userId == null) {
+            onResult(false)
+            return
+        }
+
+        val userRef = db.collection("users").document(userId)
+        userRef.update("name", newName)
+            .addOnSuccessListener {
+                Log.d(TAG, "User name updated successfully")
+                onResult(true)
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error updating user name", e)
+                onResult(false)
+            }
+    }
 }
