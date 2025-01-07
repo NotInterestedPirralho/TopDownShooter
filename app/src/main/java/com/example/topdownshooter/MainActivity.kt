@@ -31,8 +31,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             TopDownShooterTheme {
                 val navController = rememberNavController()
-                var playerOffset by remember { mutableStateOf(Offset.Zero) }
-                //val player = remember { Player(context = this, width = 1080, height = 1920) }
 
                 NavHost(
                     modifier = Modifier.fillMaxSize(),
@@ -52,9 +50,12 @@ class MainActivity : ComponentActivity() {
                     }
 
                     composable(Screen.Home.route) {
-                        /*HomeView(
+                        Home(
                             modifier = Modifier.fillMaxSize(),
-                        )*/
+                            onPlayClick = {
+                                navController.navigate(Screen.Game.route);
+                            }
+                        )
                     }
                 }
             }
@@ -66,4 +67,5 @@ sealed class Screen (val route:String){
     object Login : Screen("login")
     object Home : Screen("home")
     object Register : Screen("register")
+
 }
