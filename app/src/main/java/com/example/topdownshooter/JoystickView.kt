@@ -20,10 +20,10 @@ fun JoystickView(
     Canvas(modifier = modifier
         .pointerInput(Unit) {
             detectDragGestures { change, dragAmount ->
-                handlePosition = (handlePosition + dragAmount).coerceIn(
+                /*handlePosition = (handlePosition + dragAmount).coerceIn(
                     Offset(-100f, -100f),
                     Offset(100f, 100f)
-                )
+                )*/
                 onMove(handlePosition)
                 change.consume()
             }
