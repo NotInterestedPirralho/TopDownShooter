@@ -57,4 +57,19 @@ class Player {
         detectCollision.right = x + bitmap.width
         detectCollision.bottom = y + bitmap.height
     }
+
+    fun updateWithJoystick(offset: Offset) {
+        x += offset.x.toInt()
+        y += offset.y.toInt()
+
+        if (x < minX) x = minX
+        if (x > maxX) x = maxX
+        if (y < minY) y = minY
+        if (y > maxY) y = maxY
+
+        detectCollision.left = x
+        detectCollision.top = y
+        detectCollision.right = x + bitmap.width
+        detectCollision.bottom = y + bitmap.height
+    }
 }

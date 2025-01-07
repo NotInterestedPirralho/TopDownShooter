@@ -9,8 +9,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.topdownshooter.login.LoginView
 import com.example.topdownshooter.ui.theme.TopDownShooterTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +28,36 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TopDownShooterTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                val navController = rememberNavController()
+                var playerOffset by remember { mutableStateOf(Offset.Zero) }
+                val player = remember { Player(context = this, width = 1080, height = 1920) }
+
+                NavHost(
+                    modifier = Modifier.fillMaxSize(),
+                    navController = navController,
+                    startDestination = Screen.Login.route
+                ) {
+                    composable(Screen.Login.route) {
+                        LoginView(
+                            modifier = Modifier.fillMaxSize(),
+                            onLoginSuccess = {
+                                navController.navigate(Screen.Home.route)
+                            }
+                        )
+                    }
+
+                    composable(Screen.Home.route) {
+                        /*HomeView(
+                            modifier = Modifier.fillMaxSize(),
+                        )*/
+                    }
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    TopDownShooterTheme {
-        Greeting("Android")
-    }
+sealed class Screen (val route:String){
+    object Login : Screen("login")
+    object Home : Screen("home")
 }
