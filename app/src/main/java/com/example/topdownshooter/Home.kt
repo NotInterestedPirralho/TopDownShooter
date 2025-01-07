@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun GameHomeView(modifier: Modifier = Modifier,
+fun Home(modifier: Modifier = Modifier,
                  onPlayClick: () -> Unit = {}){
     Box(modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.BottomCenter){
@@ -49,5 +49,5 @@ fun GameHomeView(modifier: Modifier = Modifier,
 @Preview(showBackground = true)
 @Composable
 fun GameHomeViewPreview() {
-    GameHomeView()
+    Home()
 }
