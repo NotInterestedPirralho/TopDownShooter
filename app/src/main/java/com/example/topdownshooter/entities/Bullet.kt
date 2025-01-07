@@ -1,10 +1,10 @@
-package com.example.topdownshooter
+package com.example.topdownshooter.entities
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Rect
-
+import com.example.topdownshooter.R
 
 
 class Bullet{

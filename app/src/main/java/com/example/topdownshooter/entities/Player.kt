@@ -1,9 +1,10 @@
-package com.example.topdownshooter
+package com.example.topdownshooter.entities
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Rect
+import androidx.compose.ui.geometry.Offset
 
 /*class Player {
 
@@ -15,22 +16,22 @@ import android.graphics.Rect
     var minX = 0
     var minY = 0
 
-    var bitmap : Bitmap
+    //var bitmap : Bitmap
     var boosting = false
 
     private val GRAVITY = -10
     private val MAX_SPEED = 20
     private val MIN_SPEED = 1
 
-    var detectCollision : Rect
+    //var detectCollision : Rect
 
     constructor(context: Context, width: Int, height: Int){
-        bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.player)
+        //bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.player).let { Bitmap.createScaledBitmap(it, width/8, height/4, false)}
 
         minX = 0
         maxX = width
 
-        maxY = height - bitmap.height
+        //maxY = height - bitmap.height
         minY = 0
 
         x = 75
@@ -38,7 +39,7 @@ import android.graphics.Rect
 
         speed = 1
 
-        detectCollision = Rect(x, y, bitmap.width, bitmap.height)
+        //detectCollision = Rect(x, y, bitmap.width, bitmap.height)
     }
 
     fun update(){
