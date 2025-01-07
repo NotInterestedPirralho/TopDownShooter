@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "707922819563",
+    "project_id": "topdown-f427f",
+    "storage_bucket": "topdown-f427f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707922819563:android:c9887b0691fc9c6d4e01ae",
+        "android_client_info": {
+          "package_name": "com.example.topdownshooter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp6MURs2aYrnulaGNOlCHlO44YZ8rvC24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
