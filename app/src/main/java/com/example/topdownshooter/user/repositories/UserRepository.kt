@@ -75,23 +75,54 @@ object UserRepository {
             )
     }
 
+    fun isValidUserName(userName: String): Boolean {
+        // Example validation: username must be between 3 and 20 characters and contain only alphanumeric characters
+        val regex = "^[a-zA-Z0-9]{3,20}$".toRegex()
+        return userName.matches(regex)
+    }
+
+    fun isUserNameTaken(userName: String, onResult: (Boolean) -> Unit) {
+        db.collection("users")
+            .whereEqualTo("name", userName)
+            .get()
+            .addOnSuccessListener { documents ->
+                onResult(!documents.isEmpty)
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error checking username", e)
+                onResult(false)
+            }
+    }
+
     fun updateUserName(newName: String, onResult: (Boolean) -> Unit) {
-        val currentUser = auth.currentUser
-        val userId = currentUser?.uid
-        if (userId == null) {
+        if (!isValidUserName(newName)) {
             onResult(false)
             return
         }
 
-        val userRef = db.collection("users").document(userId)
-        userRef.update("name", newName)
-            .addOnSuccessListener {
-                Log.d(TAG, "User name updated successfully")
-                onResult(true)
-            }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error updating user name", e)
+        isUserNameTaken(newName) { isTaken ->
+            if (isTaken) {
                 onResult(false)
+                return@isUserNameTaken
             }
+
+            val currentUser = auth.currentUser
+            val userId = currentUser?.uid
+            if (userId == null) {
+                onResult(false)
+                return@isUserNameTaken
+            }
+
+            val userRef = db.collection("users").document(userId)
+            userRef.update("name", newName)
+                .addOnSuccessListener {
+                    Log.d(TAG, "User name updated successfully")
+                    onResult(true)
+                }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "Error updating user name", e)
+                    onResult(false)
+                }
+        }
     }
 }

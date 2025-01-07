@@ -26,11 +26,11 @@ import com.example.topdownshooter.ui.theme.TopDownShooterTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
+        FirebaseApp.initializeApp(this)
         setContent {
             TopDownShooterTheme {
                 val navController = rememberNavController()
-
                 NavHost(
                     modifier = Modifier.fillMaxSize(),
                     navController = navController,
@@ -51,12 +51,16 @@ class MainActivity : ComponentActivity() {
                     }
 
                     composable(Screen.Home.route) {
-                        GameHomeView(
+                        Home(
                             modifier = Modifier.fillMaxSize(),
                             onPlayClick = {
                                 navController.navigate(Screen.Home.route);
                             }
+                            onHighscoreClick = { navController.navigate("highscore") }
                         )
+                    }
+                    composable("highscore") {
+                        HighscoreView()
                     }
                 }
             }

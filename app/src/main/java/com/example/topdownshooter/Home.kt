@@ -39,11 +39,13 @@ fun Home(modifier: Modifier = Modifier,
             Spacer(modifier = Modifier.height(16.dp))
             Image(painter = painterResource(id = R.drawable.highscore),
                 contentDescription = "high score" ,
-                modifier = Modifier.width(160.dp).height(80.dp),
+                modifier = Modifier.width(160.dp).height(80.dp)
+                    .clickable {
+                    onHighscoreClick()
+                },
                 contentScale = ContentScale.FillBounds)
         }
     }
-
 }
 
 @Preview(showBackground = true)
