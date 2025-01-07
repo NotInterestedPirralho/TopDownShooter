@@ -1,6 +1,7 @@
 package com.example.topdownshooter
 
 import android.os.Bundle
+import android.renderscript.ScriptIntrinsicResize
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -20,6 +21,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.topdownshooter.login.LoginView
+import com.example.topdownshooter.login.RegisterView
 import com.example.topdownshooter.ui.theme.TopDownShooterTheme
 
 class MainActivity : ComponentActivity() {
@@ -42,8 +44,11 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier.fillMaxSize(),
                             onLoginSuccess = {
                                 navController.navigate(Screen.Home.route)
-                            }
+                            },navController = navController
                         )
+                    }
+                    composable (Screen.Register.route){
+                        RegisterView(navController = navController)
                     }
 
                     composable(Screen.Home.route) {
@@ -60,4 +65,5 @@ class MainActivity : ComponentActivity() {
 sealed class Screen (val route:String){
     object Login : Screen("login")
     object Home : Screen("home")
+    object Register : Screen("register")
 }

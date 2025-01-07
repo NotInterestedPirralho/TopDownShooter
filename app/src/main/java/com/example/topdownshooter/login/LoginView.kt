@@ -15,11 +15,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.topdownshooter.Screen
 import com.example.topdownshooter.ui.theme.TopDownShooterTheme
 
 @Composable
 fun LoginView(modifier: Modifier = Modifier,
-              onLoginSuccess : ()->Unit = {}) {
+              onLoginSuccess : ()->Unit = {},navController: NavController = rememberNavController()) {
 
     val viewModel : LoginViewModel = viewModel()
     val state = viewModel.state.value
@@ -60,10 +63,17 @@ fun LoginView(modifier: Modifier = Modifier,
                 }
             )
             Spacer(modifier = Modifier.height(16.dp))
+            Button(onClick = {navController.navigate(Screen.Register.route)},
+                content = {
+                    Text("Register")})
+
+            Spacer(modifier = Modifier.height(16.dp))
             if (state.error != null)
                 Text(state.error?:"")
             if (state.isLoading)
                 CircularProgressIndicator()
+
+
         }
     }
 }
