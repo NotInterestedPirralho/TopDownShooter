@@ -120,7 +120,7 @@ In the game itself theres 4 main functions those being init(),update(),draw() an
 
 - And finally control serves to monitor the time between frames for a more consistent game and to call a gameOver
 
-Theres also this function which deals with the touches detected by the screen to deal with the Joysticks for movement and Aiming
+Theres also this function which deals with the touches detected by the screen to deal with the Joysticks for movement and Aiming (currently there seems to be a bug in which the shooting joystick is always active and never stops shooting after starting)
 ```Kotlin
  override fun onTouchEvent(event: MotionEvent?): Boolean {
             event?.let {
@@ -154,6 +154,8 @@ Theres also this function which deals with the touches detected by the screen to
             return true
         }
 ```
+
+Other than that all the other entity files are pretty standard and simply have the variables mentioned in the data structure.
                 
 
 ---
