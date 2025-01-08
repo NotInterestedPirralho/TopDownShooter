@@ -119,6 +119,41 @@ In the game itself theres 4 main functions those being init(),update(),draw() an
 - Draw draws all of the visual components on the screen each frame
 
 - And finally control serves to monitor the time between frames for a more consistent game and to call a gameOver
+
+Theres also this function which deals with the touches detected by the screen to deal with the Joysticks for movement and Aiming
+```Kotlin
+ override fun onTouchEvent(event: MotionEvent?): Boolean {
+            event?.let {
+                val pointerCount = event.pointerCount
+
+
+                for (i in 0 until pointerCount) {
+                    val x = it.getX(i)
+                    val y = it.getY(i)
+
+                    if (isWithinJoystick(movementJoystick, x, y)) {
+                        movementJoystick.update(x, y)
+                        movementJoystick.isActive = true
+                    } else if (isWithinJoystick(aimAndShootJoystick, x, y)) {
+                        aimAndShootJoystick.update(x, y)
+                        aimAndShootJoystick.isActive = true
+                    }
+                }
+
+                when (event.actionMasked) {
+                    MotionEvent.ACTION_UP, MotionEvent.ACTION_POINTER_UP -> {
+                        val index = event.actionIndex
+                        val pointerId = event.getPointerId(index)
+
+                        // Reset joystick when the finger is lifted
+                        if (pointerId == 0) movementJoystick.reset()
+                        if (pointerId == 1) aimAndShootJoystick.reset()
+                    }
+                }
+            }
+            return true
+        }
+```
                 
 
 ---
