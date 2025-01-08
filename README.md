@@ -12,6 +12,7 @@ Welcome to **Top Down Shooter 2D**, a game project built to apply the knowledge 
 - [Technologies used](#Technologiesused)
 - [Difficulties](#Difficulties)
 - [Conclusions](#Conclusions)
+  
 ---
 
 ## Project structure
