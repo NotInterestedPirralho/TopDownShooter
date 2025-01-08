@@ -1,6 +1,6 @@
 # Top Down Shooter
 
-Welcome to **Top Down Shooter 2D**, a game project built to apply the knowledge acquired throughout the semester in Developing an Android Mobile Application.
+Welcome to **Top Down Shooter**, a game project built to apply the knowledge acquired throughout the semester in Developing an Android Mobile Application.
 ---
 
 ## Table of Contents
@@ -12,7 +12,7 @@ Welcome to **Top Down Shooter 2D**, a game project built to apply the knowledge 
 - [Technologies used](#Technologiesused)
 - [Difficulties](#Difficulties)
 - [Conclusions](#Conclusions)
-  
+- [License](#License)
 ---
 
 ## Project structure
