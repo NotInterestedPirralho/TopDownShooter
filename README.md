@@ -1,20 +1,20 @@
 # Top Down Shooter
 
-Welcome to **Top Down Shooter**, a game project built to deliver a thrilling top-down shooting experience! This repository contains all the code, assets, and instructions to set up, run, and contribute to the game.
-
+Welcome to **Top Down Shooter 2D**, a game project built to apply the knowledge acquired throughout the semester in Developing an Android Mobile Application.
 ---
 
 ## Table of Contents
-- [Features](#features)
-- [Installation](#installation)
-- [How to Play](#how-to-play)
-- [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
-
+- [Project structure](#Projectstructure)
+- [Application functionality list](#Applicationfunctionalitylist)
+- [Application drawings, schemes and prototypes](#Applicationdrawings,schemesandprototypes)
+- [Data model](#Datamodel)
+- [Project implementation](#Projectimplementation)
+- [Technologies used](#Technologiesused)
+- [Difficulties](#Difficulties)
+- [Conclusions](#Conclusions)
 ---
 
-## Features
+## Project structure
 - Dynamic top-down shooting mechanics.
 - Smooth character movement and aiming system.
 - Multiple enemy types with unique behaviors.
@@ -23,7 +23,7 @@ Welcome to **Top Down Shooter**, a game project built to deliver a thrilling top
 
 ---
 
-## Installation
+## Application functionality list
 
 ### Prerequisites
 - Make sure you have the following installed:
@@ -45,7 +45,7 @@ Welcome to **Top Down Shooter**, a game project built to deliver a thrilling top
 
 ---
 
-## How to Play
+## Application drawings, schemes and prototypes
 - **Movement:** Use `W`, `A`, `S`, `D` (or arrow keys) to move your character.
 - **Aiming:** Move the mouse to aim your weapon.
 - **Shooting:** Left-click to shoot.
@@ -53,15 +53,12 @@ Welcome to **Top Down Shooter**, a game project built to deliver a thrilling top
 
 ---
 
-## Technologies Used
-- **Programming Language(s):** (e.g., C#, Python, C++)
-- **Game Engine:** (e.g., Unity, Unreal Engine, Godot)
-- **Libraries/Frameworks:** (e.g., PyGame, OpenGL, etc.)
-- **Other Tools:** (e.g., Photoshop, Blender, etc.)
+## Data model
+
 
 ---
 
-## Contributing
+## Project implementation
 
 Contributions are welcome! If you'd like to contribute, please follow these steps:
 1. Fork this repository.
@@ -81,14 +78,21 @@ Contributions are welcome! If you'd like to contribute, please follow these step
 
 ---
 
-## License
+## Technologies used
+
+- **Programming Language(s):** (e.g., C#, Python, C++)
+- **Game Engine:** (e.g., Unity, Unreal Engine, Godot)
+- **Libraries/Frameworks:** (e.g., PyGame, OpenGL, etc.)
+- **Other Tools:** (e.g., Photoshop, Blender, etc.)
+---
+
+## Difficulties
+
+---
+## Conclusions
+
+---
+## License 
+
 This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute this project as per the license terms.
-
 ---
-
-## Contact
-For any questions or feedback, please reach out to the repository maintainer or open an issue in the repository.
-
----
-
-Enjoy playing **Top Down Shooter** and happy coding!
