@@ -51,10 +51,11 @@ Welcome to **Top Down Shooter**, a game project built to apply the knowledge acq
 
 ## Technologies used
 
-- **Programming Language(s):** (e.g., C#, Python, C++)
-- **Game Engine:** (e.g., Unity, Unreal Engine, Godot)
+- **Programming Language(s):** Java and Kotlin
+- **Program:** Android Studio
 - **Libraries/Frameworks:** (e.g., PyGame, OpenGL, etc.)
-- **Other Tools:** (e.g., Photoshop, Blender, etc.)
+- **Other Tools:** Firebase
+  
 ---
 
 ## Difficulties
