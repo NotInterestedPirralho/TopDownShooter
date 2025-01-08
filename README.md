@@ -19,7 +19,6 @@ Welcome to **Top Down Shooter**, a game project built to apply the knowledge acq
 ## Project structure
 
 The project is organized as follows:
-
 ### Entities
 - Bullet
 - Enemy
