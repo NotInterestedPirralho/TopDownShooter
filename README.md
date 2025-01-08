@@ -26,6 +26,14 @@ Welcome to **Top Down Shooter 2D**, a game project built to apply the knowledge 
 
 ## Application functionality list
 
+- **Register:** Register an username, email account and set a password to create a user
+- **Login:** Use your registered account and password
+- **Start:** Press this button to start playing
+- **Highscore:** Press this button to see the highscore of the people who play 
+- **Movement:** Use the left joystick to move.
+- **Aiming:** Use the right joystick to aim your weapon.
+- **Shooting:** Works automatically when aiming.
+- **Objectives:** Survive enemies to achieve the highest score!
 
 ---
 
@@ -40,10 +48,7 @@ Welcome to **Top Down Shooter 2D**, a game project built to apply the knowledge 
 
 ## Project implementation
 
-- **Movement:** Use `W`, `A`, `S`, `D` (or arrow keys) to move your character.
-- **Aiming:** Move the mouse to aim your weapon.
-- **Shooting:** Left-click to shoot.
-- **Objectives:** Survive waves of enemies, collect power-ups, and achieve the highest score!
+
 
 
 ---
