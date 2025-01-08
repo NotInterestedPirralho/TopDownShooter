@@ -119,12 +119,9 @@ We had plans to associate the username with the score obtained. However, we only
 
 ## Conclusions
 
-The development of the Top Down Shooter game project has been a comprehensive and rewarding experience, allowing us to apply and expand our knowledge in Android mobile application development. Throughout the project, we successfully implemented various functionalities, including user registration, login, and gameplay mechanics such as movement and aiming.
-
+The development of the Top Down Shooter game project has been a comprehensive and rewarding experience, allowing us to apply and expand our knowledge in Android mobile application development. Throughout the project, we successfully implemented various functionalities, including user registration, login, and gameplay mechanics such as movement and aiming. 
 Our data model effectively manages the interactions between the player, bullets, and enemies, ensuring a dynamic and engaging gameplay experience. The use of technologies like Java, Kotlin, Jetpack Compose, and Firebase has enabled us to create a robust and scalable application.
-
 Despite facing several challenges, such as detecting joystick touches, rotating the player, and ensuring accurate bullet direction, we persevered and found solutions to these problems. These difficulties have not only tested our technical skills but also our problem-solving abilities and teamwork.
-
 Although we were unable to fully integrate the username with the high score due to time constraints, we have met the core requirements of the project and delivered a functional and enjoyable game. This project has provided valuable insights and practical experience that will be beneficial for future endeavors in mobile application development.
 
 ---
