@@ -53,8 +53,8 @@ Welcome to **Top Down Shooter**, a game project built to apply the knowledge acq
 
 - **Programming Language(s):** Java and Kotlin
 - **Program:** Android Studio
-- **Libraries/Frameworks:** (e.g., PyGame, OpenGL, etc.)
-- **Other Tools:** Firebase
+- **Libraries/Frameworks:** Jetpack Compose (incluindo Navigation Component), Firebase (Authentication, Firestore Database) e Google services
+- **Other Tools:** 
   
 ---
 
