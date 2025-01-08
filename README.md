@@ -16,11 +16,7 @@ Welcome to **Top Down Shooter**, a game project built to apply the knowledge acq
 ---
 
 ## Project structure
-- Dynamic top-down shooting mechanics.
-- Smooth character movement and aiming system.
-- Multiple enemy types with unique behaviors.
-- Power-ups and weapon upgrades.
-- Scoring and leaderboard system.
+
 
 ---
 
