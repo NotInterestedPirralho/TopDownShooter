@@ -43,7 +43,7 @@ The project is organized as follows:
 - Home
 - Joystick
 
-### Outros
+### Others
 - Highscore
 - MainActivity
 - Player
