@@ -1,18 +1,19 @@
 # Top Down Shooter
 
 Welcome to **Top Down Shooter**, a game project built to apply the knowledge acquired throughout the semester in Developing an Android Mobile Application.
+
 ---
 
 ## Table of Contents
 - [Project structure](#Projectstructure)
 - [Application functionality list](#Applicationfunctionalitylist)
-- [Application drawings, schemes and prototypes](#Applicationdrawings,schemesandprototypes)
 - [Data model](#Datamodel)
 - [Project implementation](#Projectimplementation)
 - [Technologies used](#Technologiesused)
 - [Difficulties](#Difficulties)
 - [Conclusions](#Conclusions)
 - [License](#License)
+  
 ---
 
 ## Project structure
@@ -64,10 +65,6 @@ The project is organized as follows:
 
 ---
 
-## Application drawings, schemes and prototypes
-
----
-
 ## Data model
 
 
@@ -104,12 +101,13 @@ Finally, ensuring that the bullet fired in the correct direction the player was 
 We had plans to associate the username with the score obtained. However, we only realized this requirement when the project was nearly complete. To address this, we would have needed to change the way the database stored the data. Given that we had already met the requirements for this part of the project, we decided to leave it as it was.
 
 ---
+
 ## Conclusions
 
 ---
+
 ## License 
 
 Copyright 2025 Miguel Silva & Hugo Oliveira
 
 Licensed under [MIT License](LICENSE)
----
