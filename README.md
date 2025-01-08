@@ -17,7 +17,38 @@ Welcome to **Top Down Shooter**, a game project built to apply the knowledge acq
 
 ## Project structure
 
+The project is organized as follows:
 
+### Entities
+- Bullet
+- Enemy
+
+### Login
+- LoginView
+- LoginViewModel
+- RegisterView
+- RegisterViewModel
+
+### User
+#### Models
+- User
+#### Repositories
+- UserRepository
+
+### Views
+- GameOverView
+- GameScreenView
+- GameView
+- HighscoreView
+- Home
+- Joystick
+
+### Outros
+- Highscore
+- MainActivity
+- Player
+- SaveHighscore
+  
 ---
 
 ## Application functionality list
