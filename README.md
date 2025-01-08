@@ -70,6 +70,8 @@ Another challenge was rotating the player according to the joystick direction.
 
 Finally, ensuring that the bullet fired in the correct direction the player was facing was particularly difficult. 
 
+We had plans to associate the username with the score obtained. However, we only realized this requirement when the project was nearly complete. To address this, we would have needed to change the way the database stored the data. Given that we had already met the requirements for this part of the project, we decided to leave it as it was.
+
 ---
 ## Conclusions
 
