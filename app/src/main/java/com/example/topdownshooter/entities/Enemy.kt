@@ -19,7 +19,7 @@ class Enemy {
     var minY = 0
 
     var bitmap : Bitmap
-    var boosting = false
+
 
     var direction: Direction
 
@@ -32,14 +32,15 @@ class Enemy {
         LEFT, RIGHT, TOP, BOTTOM
     }
 
-    init {
-        bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.enemy)
+    constructor(context: Context, width: Int, height: Int){
+    bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.enemy).let{Bitmap.createScaledBitmap(it, width/16, height/8, false)}
 
-        minX = 0
-        maxX = width
+    minX = 1
+    maxX = width
 
-        maxY = height - bitmap.height
-        minY = 0
+    maxY = height
+    minY = 1
+
 
         direction = Direction.values()[generator.nextInt(Direction.values().size)]
         speed = generator.nextInt(6) + 10
@@ -50,12 +51,12 @@ class Enemy {
                 y = generator.nextInt(maxY)
             }
             Direction.RIGHT -> {
-                x = minX - bitmap.width
+                x = minX
                 y = generator.nextInt(maxY)
             }
             Direction.TOP -> {
                 x = generator.nextInt(maxX)
-                y = minY - bitmap.height
+                y = minY
             }
             Direction.BOTTOM -> {
                 x = generator.nextInt(maxX)
@@ -66,22 +67,7 @@ class Enemy {
         detectCollision = Rect(x, y, bitmap.width, bitmap.height)
     }
 
-    /*constructor(context: Context, width: Int, height: Int){
-        bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.enemy)
 
-        minX = 0
-        maxX = width
-
-        maxY = height - bitmap.height
-        minY = 0
-
-        x = maxX
-        y = generator.nextInt(maxY)
-
-        speed = generator.nextInt(6) + 10
-
-        detectCollision = Rect(x, y, bitmap.width, bitmap.height)
-    }*/
 
     fun update(playerSpeed: Int) {
         when (direction) {
