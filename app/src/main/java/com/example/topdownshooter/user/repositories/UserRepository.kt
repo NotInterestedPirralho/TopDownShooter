@@ -66,6 +66,13 @@ object UserRepository {
         if (userId == null)
             return
 
+        user.docId = userId
+        db.collection("users")
+            .document(userId)
+            .set(
+                user
+            )
+
         user.email = currentUser.email
 
         db.collection("users")
