@@ -90,13 +90,14 @@ The project is organized as follows:
 
 ## Project implementation
 
-We start by making the user Login with valid credentials or Registering in the event of lack of credentials, then he is directed to the main menu screen using Navcontrollers and Unit values to check when the Register or login is succesfull (Username is currently not used for anything and this is only needed to do once unless the user logs out)
+We start by making the user Login with valid credentials or Registering in the event of lack of credentials, then he is directed to the main menu screen using Navcontrollers and Unit values to check when the Register or login is succesfull (Username is currently not used for anything and this is only needed to do once unless the user logs out).
 ![image](https://github.com/user-attachments/assets/96bc8d70-e570-44d5-add1-7d61716bd9a4) ![image](https://github.com/user-attachments/assets/abaae446-31b0-4cac-ad78-9036919d7157)
 
-in the Home Screen there is only 3 buttons, one to start the game, one to check the highscores and one to Logout (image is a placeholder)
+in the Home Screen there is only 3 buttons, one to start the game, one to check the highscores and one to Logout (image is a placeholder).
+
 ![image](https://github.com/user-attachments/assets/5d00283d-4acc-4b39-bbf4-e927464e17c9)
 
-(Code used for the Play Now button, other buttons function in a similar way by using a Unit value to determine where to move)
+(Code used for the Play Now button, other buttons function in a similar way by using a Unit value to determine where to move).
 
 ```Kotlin 
 Column(modifier = Modifier.padding(40.dp),
@@ -110,17 +111,17 @@ Column(modifier = Modifier.padding(40.dp),
                 contentScale = ContentScale.FillBounds)
 ```
 
-In the game itself theres 4 main functions those being init(),update(),draw() and control(), these functions are all in the GameView file
+In the game itself theres 4 main functions those being init(),update(),draw() and control(), these functions are all in the GameView file:
 
-- Init is responsible for initializing all the entities and assets that we need
+- Init is responsible for initializing all the entities and assets that we need.
 
-- Update takes care of dealing with the logic of each of those that were initialized
+- Update takes care of dealing with the logic of each of those that were initialized.
 
-- Draw draws all of the visual components on the screen each frame
+- Draw draws all of the visual components on the screen each frame.
 
-- And finally control serves to monitor the time between frames for a more consistent game and to call a gameOver
+- And finally control serves to monitor the time between frames for a more consistent game and to call a gameOver.
 
-Theres also this function which deals with the touches detected by the screen to deal with the Joysticks for movement and Aiming (currently there seems to be a bug in which the shooting joystick is always active and never stops shooting after starting)
+Theres also this function which deals with the touches detected by the screen to deal with the Joysticks for movement and Aiming (currently there seems to be a bug in which the shooting joystick is always active and never stops shooting after starting).
 ```Kotlin
  override fun onTouchEvent(event: MotionEvent?): Boolean {
             event?.let {
