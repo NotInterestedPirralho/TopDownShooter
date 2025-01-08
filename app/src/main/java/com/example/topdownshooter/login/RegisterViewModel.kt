@@ -9,6 +9,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 data class RegisterState(
+    val username: String = "",
     val email: String = "",
     val password: String = "",
     val passwordConfirmation: String = "",
@@ -20,6 +21,10 @@ class RegisterViewModel : ViewModel() {
 
     var state = mutableStateOf(RegisterState())
         private set
+
+    fun onUserNameChange(username: String) {
+        state.value = state.value.copy(username = username)
+    }
 
     fun onEmailChange(email: String) {
         state.value = state.value.copy(email = email)
@@ -48,30 +53,51 @@ class RegisterViewModel : ViewModel() {
         } else return true
     }
 
-    fun onRegisterClick(onRegisterSuccess: ()->Unit) {
-        state.value = state.value.copy(isLoading = true)
+    fun onRegisterClick(onRegisterSuccess: () -> Unit) {
+        // Reset previous error state
+        state.value = state.value.copy(error = null, isLoading = true)
 
-        val auth: FirebaseAuth = Firebase.auth
-
-        if (userinserted()) {
-            auth.createUserWithEmailAndPassword(state.value.email, state.value.password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        state.value = state.value.copy(isLoading = false)
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "createUserWithEmail:success")
-                        val user = auth.currentUser
-                        onRegisterSuccess()
-                    } else {
-                        Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                        state.value =
-                            state.value.copy(error = task.exception?.message ?: "Unknown error")
-                        state.value = state.value.copy(isLoading = false)
-                    }
-                }
-
+        // Validate user input before making Firebase call
+        if (!userinserted()) {
+            state.value = state.value.copy(isLoading = false) // Stop loading if validation fails
+            return
         }
 
-        else state.value = state.value.copy(isLoading = false)
+        if (!CheckPasswords()) {
+            state.value = state.value.copy(isLoading = false) // Stop loading if passwords don't match
+            return
+        }
+
+        // Proceed with Firebase registration
+        val auth: FirebaseAuth = Firebase.auth
+        auth.createUserWithEmailAndPassword(state.value.email, state.value.password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    val profileUpdates = com.google.firebase.auth.UserProfileChangeRequest.Builder()
+                        .setDisplayName(state.value.username)
+                        .build()
+
+                    user?.updateProfile(profileUpdates)?.addOnCompleteListener { profileTask ->
+                        if (profileTask.isSuccessful) {
+                            Log.d(TAG, "User profile updated.")
+                            state.value = state.value.copy(isLoading = false)
+                            onRegisterSuccess()
+                        } else {
+                            Log.w(TAG, "User profile update failed.", profileTask.exception)
+                            state.value = state.value.copy(
+                                error = profileTask.exception?.message ?: "Failed to update profile",
+                                isLoading = false
+                            )
+                        }
+                    }
+                } else {
+                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                    state.value = state.value.copy(
+                        error = task.exception?.message ?: "Registration failed",
+                        isLoading = false
+                    )
+                }
+            }
     }
 }

@@ -34,6 +34,15 @@ fun RegisterView(modifier: Modifier = Modifier, navController: NavController = r
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            TextField(value = state.username,
+                onValueChange = {
+                    viewModel.onUserNameChange(it)
+                },
+                placeholder = {
+                    Text("user name")
+                }
+            )
+            Spacer(modifier = Modifier.height(16.dp))
             TextField(value = state.email,
                 onValueChange = {
                     viewModel.onEmailChange(it)
