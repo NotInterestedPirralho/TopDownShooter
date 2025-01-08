@@ -21,7 +21,7 @@ class Player {
     var minY = 0
 
     var bitmap : Bitmap
-    var speed = 10
+    var speed = 5
     var detectCollision : Rect
 
     constructor(context: Context, width: Int, height: Int){

@@ -10,10 +10,11 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Handler
 import android.os.Looper
-import android.util.SparseArray
+import android.util.Log
 import android.view.MotionEvent
 import com.example.topdownshooter.entities.Bullet
 import com.example.topdownshooter.entities.Enemy
+import com.google.firebase.auth.FirebaseAuth
 
 class GameView : SurfaceView, Runnable {
 
@@ -211,6 +212,7 @@ class GameView : SurfaceView, Runnable {
                     if (!callGameOverOnce) {
                         onGameOver()
                         callGameOverOnce = true
+                        saveHighScore(getCurrentUser(),Score)
                     }
                     gameThread?.join()
                 }
@@ -256,7 +258,19 @@ class GameView : SurfaceView, Runnable {
 }
 
 
+fun getCurrentUser(): String {
+    var firebaseAuth = FirebaseAuth.getInstance()
+    val currentUser = firebaseAuth.currentUser
 
+    if (currentUser != null) {
+        val userId = currentUser.uid
+        Log.d("FirebaseUserID", "User ID: $userId")
+        return userId
+    } else {
+        Log.d("FirebaseUserID", "No user is signed in.")
+    }
+    return null.toString()
+}
 
 private fun isWithinJoystick(joystick: Joystick, x: Float, y: Float): Boolean {
     val dx = x - joystick.baseX

@@ -93,7 +93,7 @@ class Enemy {
     private fun resetPosition() {
         direction = Direction.values()[generator.nextInt(Direction.values().size)]
         setRotationAngle()
-        speed = generator.nextInt(6) + 10
+        speed = generator.nextInt(3) + 4
 
         when (direction) {
             Direction.LEFT -> {
