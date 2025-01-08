@@ -83,9 +83,13 @@ The project is organized as follows:
 
 #### Data Storage
 - In this project, data is stored in attributes within the Player, Enemy, and Bullet classes. Each class has attributes for position, image, speed, and collision detection. The Player class also stores the rotation angle and movement speed. The Enemy class includes direction and speed, while the Bullet class stores normalized direction and speed. These attributes are initialized in the constructors and updated in the update methods to reflect changes during the game.
+
+#### Authentication
+- The authentication method used in this project is the Email and password method from Firebase.
 ---
 
 ## Project implementation
+
 
 
 
