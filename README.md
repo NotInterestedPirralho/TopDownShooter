@@ -53,12 +53,22 @@ Welcome to **Top Down Shooter**, a game project built to apply the knowledge acq
 
 - **Programming Language(s):** Java and Kotlin
 - **Program:** Android Studio
-- **Libraries/Frameworks:** Jetpack Compose (incluindo Navigation Component), Firebase (Authentication, Firestore Database) e Google services
+- **Libraries/Frameworks:** Jetpack Compose (including Navigation Component), Firebase (Authentication, Firestore Database) e Google services
 - **Other Tools:** 
   
 ---
 
 ## Difficulties
+
+During the development of our project, we encountered several technical challenges that required  patience and persistence.
+
+Firstly, detecting touches on the joysticks presented significant challenges. 
+
+The creation of the joysticks was also not a simple task. 
+
+Another challenge was rotating the player according to the joystick direction. 
+
+Finally, ensuring that the bullet fired in the correct direction the player was facing was particularly difficult. 
 
 ---
 ## Conclusions
