@@ -7,38 +7,43 @@ import android.graphics.Rect
 import com.example.topdownshooter.R
 
 
-class Bullet{
-    var x = 0
-    var y = 0
-    var speed = 25 // Velocidade da bala
+class Bullet {
+    var x = 0f
+    var y = 0f
+    var speed = 25f // Speed of the bullet
+    var directionX = 0f
+    var directionY = 0f
 
+    var bitmap: Bitmap // Image for the bullet
+    var detectCollisions: Rect
 
-    var bitmap: Bitmap // Crie uma imagem para a bala
+    constructor(context: Context, startX: Int, startY: Int, aimX: Float, aimY: Float, width: Int, height: Int) {
+        x = startX.toFloat()
+        y = startY.toFloat()
 
-    var detectCollisions : Rect
-
-    constructor(context: Context, startX: Int, startY: Int,width: Int, height: Int){
-
-        x = startX
-
-
-        bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.bullet).let{
-            Bitmap.createScaledBitmap(it, width/18, height/12, false)
+        // Normalize the aim direction
+        val magnitude = Math.sqrt((aimX * aimX + aimY * aimY).toDouble()).toFloat()
+        if (magnitude != 0f) {
+            directionX = aimX / magnitude
+            directionY = aimY / magnitude
         }
-        y = startY - (bitmap.height / 2)
-        detectCollisions = Rect(x, y, bitmap.width, bitmap.height)
 
-
+        bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.bullet).let {
+            Bitmap.createScaledBitmap(it, width / 18, height / 12, false)
+        }
+        detectCollisions = Rect(x.toInt(), y.toInt(), (x + bitmap.width).toInt(), (y + bitmap.height).toInt())
     }
-
-
 
     fun update() {
-        x += speed
+        // Move the bullet in the direction of the aim
+        x += directionX * speed
+        y += directionY * speed
 
-        detectCollisions.left = x
-        detectCollisions.top = y
-        detectCollisions.right = x + bitmap.width
-        detectCollisions.bottom = y + bitmap.height
+        // Update collision detection
+        detectCollisions.left = x.toInt()
+        detectCollisions.top = y.toInt()
+        detectCollisions.right = (x + bitmap.width).toInt()
+        detectCollisions.bottom = (y + bitmap.height).toInt()
     }
+
 }

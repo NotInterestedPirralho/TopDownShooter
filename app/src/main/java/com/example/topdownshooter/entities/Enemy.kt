@@ -3,6 +3,7 @@ package com.example.topdownshooter.entities
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.graphics.Rect
 import com.example.topdownshooter.R
 import java.util.Random
@@ -19,6 +20,7 @@ class Enemy {
     var minY = 0
 
     var bitmap : Bitmap
+    var rotationAngle = 0f // Angle to rotate the bitmap based on direction
 
 
     var direction: Direction
@@ -43,6 +45,7 @@ class Enemy {
 
 
         direction = Direction.values()[generator.nextInt(Direction.values().size)]
+        setRotationAngle()
         speed = generator.nextInt(6) + 10
 
         when (direction) {
@@ -69,12 +72,12 @@ class Enemy {
 
 
 
-    fun update(playerSpeed: Int) {
+    fun update() {
         when (direction) {
-            Direction.LEFT -> x -= (playerSpeed + speed)
-            Direction.RIGHT -> x += (playerSpeed + speed)
-            Direction.TOP -> y += (playerSpeed + speed)
-            Direction.BOTTOM -> y -= (playerSpeed + speed)
+            Direction.LEFT -> x -= (speed)
+            Direction.RIGHT -> x += (speed)
+            Direction.TOP -> y += (speed)
+            Direction.BOTTOM -> y -= (speed)
         }
 
         if (x < minX - bitmap.width || x > maxX || y < minY - bitmap.height || y > maxY) {
@@ -89,6 +92,7 @@ class Enemy {
 
     private fun resetPosition() {
         direction = Direction.values()[generator.nextInt(Direction.values().size)]
+        setRotationAngle()
         speed = generator.nextInt(6) + 10
 
         when (direction) {
@@ -109,5 +113,19 @@ class Enemy {
                 y = maxY
             }
         }
+    }
+    private fun setRotationAngle() {
+        rotationAngle = when (direction) {
+            Direction.LEFT -> 180f
+            Direction.RIGHT -> 0f
+            Direction.TOP -> 90f
+            Direction.BOTTOM -> 270f
+        }
+    }
+
+    fun getRotatedBitmap(): Bitmap {
+        val matrix = Matrix()
+        matrix.postRotate(rotationAngle, (bitmap.width / 2).toFloat(), (bitmap.height / 2).toFloat())
+        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
     }
 }
