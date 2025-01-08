@@ -98,7 +98,7 @@ in the Home Screen there is only 3 buttons, one to start the game, one to check 
 
 (Code used for the Play Now button, other buttons function in a similar way by using a Unit value to determine where to move)
 
-'''Kotlin 
+```Kotlin 
 Column(modifier = Modifier.padding(40.dp),
             horizontalAlignment = Alignment.CenterHorizontally) {
             Image(painter = painterResource(id = R.drawable.playnow),
@@ -108,13 +108,17 @@ Column(modifier = Modifier.padding(40.dp),
                         onPlayClick()
                     },
                 contentScale = ContentScale.FillBounds)
-                '''
+```
 
-In the game itself theres 4 main functions those being init(),update(),draw() and control()
-Init is responsible for initializing all the entities and assets that we need
-Update takes care of dealing with the logic of each of those that were initialized
-Draw draws all of the visual components on the screen each frame
-And finally control serves to monitor the time between frames for a more consistent game and to call a gameOver
+In the game itself theres 4 main functions those being init(),update(),draw() and control(), these functions are all in the GameView file
+
+- Init is responsible for initializing all the entities and assets that we need
+
+- Update takes care of dealing with the logic of each of those that were initialized
+
+- Draw draws all of the visual components on the screen each frame
+
+- And finally control serves to monitor the time between frames for a more consistent game and to call a gameOver
                 
 
 ---
