@@ -24,7 +24,8 @@ import com.google.firebase.auth.FirebaseAuth
 @Composable
 fun Home(modifier: Modifier = Modifier,
          onPlayClick: () -> Unit = {},
-         navController: NavController = rememberNavController()){
+         navController: NavController = rememberNavController(),
+         onHighscoreClick: () -> Unit = {}){
 
     fun LogoutClick(navController: NavController) {
         FirebaseAuth.getInstance().signOut()
@@ -54,7 +55,7 @@ fun Home(modifier: Modifier = Modifier,
                 contentDescription = "high score" ,
                 modifier = Modifier.width(300.dp).height(60.dp)
                     .clickable {
-                    //onHighscoreClick()
+                    onHighscoreClick()
                 },
                 contentScale = ContentScale.FillBounds)
         }

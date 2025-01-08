@@ -55,14 +55,17 @@ class MainActivity : ComponentActivity() {
                             navController = navController,
                             onPlayClick =
                             {navController.navigate(Screen.GameScreen.route)},
-                            //onHighscoreClick = { navController.navigate("highscore") }
+                            onHighscoreClick = { navController.navigate(Screen.HighScore.route) }
                         )
                     }
                     composable(Screen.HighScore.route) {
                         HighscoreView()
                     }
                     composable(Screen.GameScreen.route) {
-                        GameScreenView()
+                        GameScreenView(navController = navController,onGameOver = {navController.navigate(Screen.GameOver.route)})
+                    }
+                    composable(Screen.GameOver.route) {
+                        GameOverView(onResumeClick = {navController.navigate(Screen.Home.route)})
                     }
 
 
@@ -85,4 +88,6 @@ sealed class Screen (val route:String){
     object Register : Screen("register")
     object HighScore : Screen("highscore")
     object GameScreen : Screen("gamescreen")
+    object GameOver : Screen("gameover")
+
 }

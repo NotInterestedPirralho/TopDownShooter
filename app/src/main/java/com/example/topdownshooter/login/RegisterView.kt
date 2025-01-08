@@ -51,7 +51,7 @@ fun RegisterView(modifier: Modifier = Modifier, navController: NavController = r
                     Text("email")
                 }
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             TextField(value = state.password,
                 onValueChange = {
                     viewModel.onPasswordChange(it)
@@ -60,13 +60,13 @@ fun RegisterView(modifier: Modifier = Modifier, navController: NavController = r
                     Text("password")
                 }
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             TextField(value = state.passwordConfirmation,
                 onValueChange = {
                     viewModel.onPasswordConfirmationChange(it)
                 },
                 placeholder = {Text("password confirmation")})
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             Button(
                 onClick = {
                     if (viewModel.CheckPasswords()) {
@@ -78,13 +78,13 @@ fun RegisterView(modifier: Modifier = Modifier, navController: NavController = r
                 content = {
                     Text("Register")
                 })
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             Button(onClick = { navController.navigate(Screen.Login.route) },
                 content = {
                     Text("Back")
                 })
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             if (state.error != null)
                 Text(state.error)
             if (state.isLoading)

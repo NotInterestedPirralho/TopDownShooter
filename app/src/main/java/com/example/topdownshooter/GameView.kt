@@ -8,6 +8,8 @@ import android.view.SurfaceView
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
+import android.os.Handler
+import android.os.Looper
 import android.util.SparseArray
 import android.view.MotionEvent
 import com.example.topdownshooter.entities.Bullet
@@ -33,7 +35,8 @@ class GameView : SurfaceView, Runnable {
     val bulletstoremove = mutableListOf<Bullet>()
     private var lastShotTime: Long = 0 // Tracks the last time a shot was fired
     private val shootingDelay: Long = 500 // Delay between shots in milliseconds
-
+    var life = 1
+    var onGameOver : () -> Unit = {}
 
     fun shootBullet(directionX: Float, directionY: Float) {
         val bullet = Bullet(context,(player.x).toInt(), (player.y).toInt(), directionX, directionY,width,height)
@@ -124,6 +127,11 @@ class GameView : SurfaceView, Runnable {
         for (e in enemies) {
             e.update()
 
+            if (Rect.intersects(player.detectCollision, e.detectCollision)){
+                life = 0
+
+            }
+
             for (bullet in bullets) {
                 if (Rect.intersects(e.detectCollision, bullet.detectCollisions)) {
                     e.x = -600
@@ -144,6 +152,7 @@ class GameView : SurfaceView, Runnable {
                 canvas = surfaceHolder.lockCanvas()
                 canvas.drawColor(Color.DKGRAY)
                 paint.color = Color.YELLOW
+                paint.textSize = 60f
 
                 val rotatedBitmap = player.getRotatedBitmap()
                 canvas.drawBitmap(rotatedBitmap, player.x.toFloat(), player.y.toFloat(), paint)
@@ -183,6 +192,8 @@ class GameView : SurfaceView, Runnable {
                     canvas.drawBitmap(bullet.bitmap, bullet.x, bullet.y, paint)
                 }
 
+                canvas.drawText("Score: ${Score}", 20f, 60f, paint)
+
 
 
                 surfaceHolder.unlockCanvasAndPost(canvas)
@@ -190,11 +201,20 @@ class GameView : SurfaceView, Runnable {
 
         }
 
+    var callGameOverOnce = false
 
-        var callGameOverOnce = false
-
-        fun control() {
+    fun control() {
             Thread.sleep(17)
+            if (life == 0 ){
+                playing = false
+                Handler(Looper.getMainLooper()).post {
+                    if (!callGameOverOnce) {
+                        onGameOver()
+                        callGameOverOnce = true
+                    }
+                    gameThread?.join()
+                }
+                }
 
         }
 
@@ -204,7 +224,6 @@ class GameView : SurfaceView, Runnable {
 
 
                 for (i in 0 until pointerCount) {
-                    val pointerId = it.getPointerId(i)
                     val x = it.getX(i)
                     val y = it.getY(i)
 

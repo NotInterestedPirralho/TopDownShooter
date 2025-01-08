@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun GameOverView(modifier: Modifier = Modifier,
                  onResumeClick: () -> Unit = {}){
-    Box(modifier = modifier.fillMaxSize(),
+    Box(modifier = modifier.fillMaxSize().clickable{onResumeClick()},
         contentAlignment = Alignment.Center){
         Text(text = "Game Over",
             fontSize = 100.sp)
