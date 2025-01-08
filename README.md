@@ -90,6 +90,10 @@ The project is organized as follows:
 
 ## Project implementation
 
+We start by making the user Login with valid credentials or Registering in the event of lack of credentials, then he is directed to the main menu screen using Navcontrollers and Unit values to check when the Register or login is succesfull (Username is currently not used for anything)
+![image](https://github.com/user-attachments/assets/96bc8d70-e570-44d5-add1-7d61716bd9a4) ![image](https://github.com/user-attachments/assets/abaae446-31b0-4cac-ad78-9036919d7157)
+
+
 
 
 
