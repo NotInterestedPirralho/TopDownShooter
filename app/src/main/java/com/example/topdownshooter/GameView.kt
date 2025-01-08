@@ -118,8 +118,9 @@ class GameView : SurfaceView, Runnable {
 
             // Check if it's time to shoot
             if (System.currentTimeMillis() - lastShotTime > shootingDelay) {
-                shootBullet(aimX, aimY) // Implement bullet shooting logic
-                lastShotTime = System.currentTimeMillis() // Update last shot time
+                 // Implement bullet shooting logic
+                lastShotTime = System.currentTimeMillis()
+                shootBullet(aimX, aimY)// Update last shot time
             }
         }
 
