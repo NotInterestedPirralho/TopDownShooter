@@ -2,12 +2,13 @@ package com.example.topdownshooter
 
 import android.content.Context
 import android.graphics.Canvas
-import android.os.Handler
-import android.os.Looper
 import android.util.AttributeSet
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.graphics.Color
+import android.graphics.Paint
+import android.util.SparseArray
+import android.view.MotionEvent
 
 class GameView : SurfaceView, Runnable {
 
@@ -15,6 +16,17 @@ class GameView : SurfaceView, Runnable {
     var gameThread: Thread? = null
     lateinit var surfaceHolder: SurfaceHolder
     lateinit var canvas: Canvas
+    lateinit var player : Player
+    lateinit var paint : Paint
+
+    private val activeTouches = SparseArray<Boolean>()
+
+
+    private fun init(context: Context, width: Int, height: Int) {
+        surfaceHolder = holder
+        paint = Paint()
+        player = Player(context, width, height)
+    }
 
     constructor(context: Context?, width: Int, height: Int) : super(context) {
         init(context!!, width, height)
@@ -32,9 +44,7 @@ class GameView : SurfaceView, Runnable {
         init(context!!, 0, 0)
     }
 
-    private fun init(context: Context, width: Int, height: Int) {
-        surfaceHolder = holder
-    }
+
 
     fun resume() {
         playing = true
@@ -56,12 +66,18 @@ class GameView : SurfaceView, Runnable {
     }
 
     fun update(){
-
+        player.update()
     }
     fun draw() {
         if (surfaceHolder.surface.isValid) {
             canvas = surfaceHolder.lockCanvas()
-            canvas.drawColor(Color.BLACK)
+            canvas.drawColor(Color.DKGRAY)
+            paint.color = Color.YELLOW
+
+            canvas.drawBitmap(player.bitmap, player.x.toFloat(), player.y.toFloat(), paint)
+
+
+
             surfaceHolder.unlockCanvasAndPost(canvas)
         }
     }
@@ -71,4 +87,40 @@ class GameView : SurfaceView, Runnable {
         Thread.sleep(17)
 
     }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        event?.let {
+            val pointerCount = event.pointerCount
+
+
+            when (event?.actionMasked) {
+
+                MotionEvent.ACTION_DOWN, MotionEvent.ACTION_POINTER_DOWN -> {
+                    val index = event.actionIndex
+                    val pointerId = event.getPointerId(index)
+                    val x = event.getX(index)
+                    val y = event.getY(index)
+
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    for (i in 0 until pointerCount) {
+                        val pointerId = event.getPointerId(i)
+                        val isBoosting = activeTouches[pointerId] ?: false
+
+
+                    }
+                }
+
+                MotionEvent.ACTION_UP,MotionEvent.ACTION_POINTER_UP -> {
+                    val index = event.actionIndex
+                    val pointerId = event.getPointerId(index)
+                    activeTouches.remove(pointerId)
+
+                }
+            }
+        }
+        return true
+    }
+
+
 }
