@@ -156,7 +156,10 @@ Theres also this function which deals with the touches detected by the screen to
         }
 ```
 
-Other than that all the other entity files are pretty standard and simply have the variables mentioned in the data structure.
+Other than that all the other entity files are pretty standard and simply have the variables mentioned in the data structure, below is a image of how the game looks (Joystick sizes may not work properly in other displays).
+
+![image](https://github.com/user-attachments/assets/51664ef5-1882-4ad4-b025-9b006401a00a)
+
                 
 
 ---
