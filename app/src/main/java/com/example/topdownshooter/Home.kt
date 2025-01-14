@@ -37,7 +37,7 @@ fun Home(modifier: Modifier = Modifier,
 
     Box(modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.BottomCenter){
-        Image(painter = painterResource(id = R.drawable.splash),
+        Image(painter = painterResource(id = R.drawable.background),
             contentDescription = "",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds)

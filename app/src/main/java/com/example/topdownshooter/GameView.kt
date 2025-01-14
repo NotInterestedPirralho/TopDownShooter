@@ -174,7 +174,12 @@ class GameView : SurfaceView, Runnable {
                     movementJoystick.radius,
                     paint2
                 )
-                canvas.drawCircle(movementJoystick.thumbX, movementJoystick.thumbY, 80f, paint3)
+                canvas.drawCircle(
+                    movementJoystick.thumbX,
+                    movementJoystick.thumbY,
+                    80f,
+                    paint3
+                )
 
                 // Draw aim-and-shoot joystick
                 canvas.drawCircle(
